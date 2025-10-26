@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Jonas Go to Washington DC!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .fundraising-banner {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .amount-raised {
+            font-size: 4em;
+            font-weight: bold;
+            margin: 20px 0;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .progress-bar-container {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            height: 40px;
+            margin: 20px auto;
+            max-width: 600px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, #fbbf24 0%, #f59e0b 100%);
+            height: 100%;
+            border-radius: 50px;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 15px;
+            font-weight: bold;
+            color: #1e3a8a;
+        }
+
+        .goal-text {
+            font-size: 1.3em;
+            margin-top: 15px;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .description {
+            background: #f3f4f6;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border-left: 5px solid #3b82f6;
+        }
+
+        .description h2 {
+            color: #1e3a8a;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .description p {
+            color: #374151;
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+
+        .donation-info {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 25px rgba(251, 191, 36, 0.3);
+        }
+
+        .donation-info h3 {
+            color: #1e3a8a;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .zelle-number {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #1e3a8a;
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .leaderboard {
+            margin-top: 30px;
+        }
+
+        .leaderboard h2 {
+            color: #1e3a8a;
+            margin-bottom: 25px;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .leaderboard-table thead {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+        }
+
+        .leaderboard-table th {
+            padding: 20px;
+            text-align: left;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .leaderboard-table th:last-child {
+            text-align: right;
+        }
+
+        .leaderboard-table td {
+            padding: 18px 20px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 1.05em;
+        }
+
+        .leaderboard-table td:last-child {
+            text-align: right;
+            font-weight: bold;
+            color: #059669;
+        }
+
+        .leaderboard-table tbody tr:hover {
+            background: #f9fafb;
+            transition: background 0.2s ease;
+        }
+
+        .leaderboard-table tbody tr:first-child {
+            background: #fef3c7;
+        }
+
+        .rank {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .rank-1 {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            font-size: 1.2em;
+        }
+
+        .rank-2 {
+            background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+        }
+
+        .rank-3 {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: #f3f4f6;
+            color: #6b7280;
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .amount-raised {
+                font-size: 2.5em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .leaderboard-table th,
+            .leaderboard-table td {
+                padding: 12px;
+                font-size: 0.95em;
+            }
+
+            .zelle-number {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Help Jonas Go to Washington DC!</h1>
+            <p>Supporting an Outstanding Student's Educational Journey</p>
+        </div>
+
+        <div class="fundraising-banner">
+            <div>Funds Raised</div>
+            <div class="amount-raised" id="totalRaised">$0</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar" style="width: 0%;">
+                    <span id="progressPercent">0%</span>
+                </div>
+            </div>
+            <div class="goal-text">Goal: <strong id="goalAmount">$1,500</strong></div>
+        </div>
+
+        <div class="content">
+            <div class="description">
+                <h2>About Jonas's Journey</h2>
+                <p>
+                    Jonas has earned an incredible opportunity to visit our nation's capital, Washington DC!
+                    Spots for this trip were limited, and not everyone who wanted to go was able to. Based on
+                    his exceptional math scores, outstanding reading achievements, and exemplary behavior,
+                    Jonas was selected as one of the students who truly deserves this reward. His dedication
+                    to academic excellence and his committed work on safety patrol have set him apart. This
+                    educational experience will allow him to see American history come alive, visit iconic
+                    monuments, and create memories that will last a lifetime. We're working to gather the
+                    necessary funds to make this dream a reality, and every contribution helps bring Jonas
+                    one step closer to this amazing adventure!
+                </p>
+            </div>
+
+            <div class="donation-info">
+                <h3>How to Donate</h3>
+                <p style="color: #1e3a8a; font-size: 1.1em; margin-bottom: 20px;">
+                    Choose your preferred payment method:
+                </p>
+
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-bottom: 20px;">
+                    <div style="background: white; padding: 20px; border-radius: 10px; flex: 1; min-width: 250px;">
+                        <h4 style="color: #1e3a8a; margin-bottom: 10px; font-size: 1.3em;">Zelle</h4>
+                        <div class="zelle-number" style="font-size: 1.6em; margin: 10px 0;">(954) 868-8062</div>
+                    </div>
+
+                    <div style="background: white; padding: 20px; border-radius: 10px; flex: 1; min-width: 250px;">
+                        <h4 style="color: #1e3a8a; margin-bottom: 10px; font-size: 1.3em;">Venmo</h4>
+                        <div class="zelle-number" style="font-size: 1.6em; margin: 10px 0;">@Jonathan-Stewart-12</div>
+                    </div>
+                </div>
+
+                <p style="color: #1e3a8a;">
+                    Every donation, no matter the size, makes a difference!
+                </p>
+            </div>
+
+            <div class="leaderboard">
+                <h2>Donation Leaderboard</h2>
+                <table class="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Donor</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboardBody">
+                        <!-- Donations will be listed here -->
+                        <tr>
+                            <td colspan="3" style="text-align: center; color: #6b7280; padding: 40px;">
+                                No donations yet. Be the first to support Jonas!
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Thank you for your generous support!</p>
+            <p style="margin-top: 10px;">Together, we can help Jonas experience Washington DC!</p>
+        </div>
+    </div>
+
+    <script>
+        // Load data from JSON file
+        async function loadData() {
+            try {
+                const response = await fetch('fundraising-data.json');
+                const data = await response.json();
+
+                updateFundraising(data.goal, data.donations);
+                updateLeaderboard(data.donations);
+            } catch (error) {
+                console.error('Error loading fundraising data:', error);
+                // Show error message to user
+                document.getElementById('totalRaised').textContent = 'Error loading data';
+            }
+        }
+
+        // Calculate total and update display
+        function updateFundraising(goal, donations) {
+            const total = donations.reduce((sum, donation) => sum + donation.amount, 0);
+            const percentage = Math.min((total / goal) * 100, 100);
+
+            document.getElementById('totalRaised').textContent = '$' + total.toLocaleString();
+            document.getElementById('goalAmount').textContent = '$' + goal.toLocaleString();
+            document.getElementById('progressBar').style.width = percentage + '%';
+            document.getElementById('progressPercent').textContent = Math.round(percentage) + '%';
+        }
+
+        // Update leaderboard
+        function updateLeaderboard(donations) {
+            const tbody = document.getElementById('leaderboardBody');
+
+            if (donations.length === 0) {
+                return; // Keep the "no donations" message
+            }
+
+            // Sort donations by amount (highest first)
+            const sortedDonations = [...donations].sort((a, b) => b.amount - a.amount);
+
+            tbody.innerHTML = sortedDonations.map((donation, index) => {
+                const rank = index + 1;
+                let rankClass = '';
+                if (rank === 1) rankClass = 'rank-1';
+                else if (rank === 2) rankClass = 'rank-2';
+                else if (rank === 3) rankClass = 'rank-3';
+
+                return `
+                    <tr>
+                        <td><span class="rank ${rankClass}">${rank}</span></td>
+                        <td>${donation.name}</td>
+                        <td>$${donation.amount.toLocaleString()}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // Initialize the page
+        loadData();
+    </script>
+</body>
+</html>

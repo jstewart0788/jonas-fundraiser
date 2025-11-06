@@ -1,4 +1,4 @@
 {
   "goal": 2000,
-  "donations": [{ "name": "Matthew Garber", "amount": 300 },{ "name": "Barbara Bencomo", "amount": 200 },{ "name": "Harvey Garber", "amount": 200 },{ "name": "Beth Besu", "amount": 150 }, { "name": "Pete Micale", "amount": 100 }]
+  "donations": [{ "name": "Matthew Garber", "amount": 300 },{ "name": "Barbara Bencomo", "amount": 200 },{ "name": "Harvey Garber", "amount": 500 },{ "name": "Beth Besu", "amount": 150 }, { "name": "Pete Micale", "amount": 100 }]
 }
